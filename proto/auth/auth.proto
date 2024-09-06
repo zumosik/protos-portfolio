@@ -13,7 +13,9 @@ service Auth {
   rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
 
-message IsAdminRequest { string user_id = 1; }
+message IsAdminRequest {
+  string user_id = 1 [ (buf.validate.field).required = true ];
+}
 
 message IsAdminResponse { bool is_admin = 1; }
 
@@ -37,6 +39,8 @@ message LoginRequest {
 
 message LoginResponse { string token = 1; }
 
-message LogoutRequest { string token = 1; }
+message LogoutRequest {
+  string token = 1 [ (buf.validate.field).required = true ];
+}
 
 message LogoutResponse { bool success = 1; }
