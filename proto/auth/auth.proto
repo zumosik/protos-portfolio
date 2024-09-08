@@ -22,8 +22,7 @@ message IsAdminResponse { bool is_admin = 1; }
 message RegisterRequest {
   string email = 1 [ (buf.validate.field).string.email = true ];
   string username = 2 [ (buf.validate.field).string = {
-    pattern : "^[A-Za-z]+( [A-Za-z]+)*$",
-    min_bytes : 5,
+    pattern : "^[A-Za-z0-9@$!%*?&]{9,}$",
     max_bytes : 256,
   } ];
 
