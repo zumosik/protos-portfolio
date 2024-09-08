@@ -22,12 +22,12 @@ message IsAdminResponse { bool is_admin = 1; }
 message RegisterRequest {
   string email = 1 [ (buf.validate.field).string.email = true ];
   string username = 2 [ (buf.validate.field).string = {
-    pattern : "^[A-Za-z0-9@$!%*?&]*$",
+    pattern : "^.{3,}$",
     max_bytes : 256,
   } ];
 
   string password = 3 [ (buf.validate.field).string = {
-    pattern : "^[A-Za-z0-9@$!%*?&]{9,}$",
+    pattern : "^.{8,}$",
     max_bytes : 256,
   } ];
 }
